@@ -1,7 +1,11 @@
-initialstate = [[1,2,3],[0,4,6],[7,5,8]]
-finalstate = [[1,2,3],[4,5,6],[7,8,0]]
+import time
+start_time = time.localtime()
 
-inputkarnahai = int(input("Custom input? 0/1: "))
+
+initialstate = [[7,4,5],[2,0,6],[8,3,1]]
+finalstate = [[1,4,7],[2,5,8],[3,6,0]]
+
+inputkarnahai = int(input("Its the hardest problem. \nDo you want to give Custom input? 0/1: "))
 
 if inputkarnahai == 1:
     for i in range(1,10):
@@ -125,3 +129,6 @@ def process():
     return False
 
 process()
+
+end_time = time.localtime()
+print("Time_Taken:",end_time-start_time)
