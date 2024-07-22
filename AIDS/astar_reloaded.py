@@ -1,14 +1,14 @@
-initialstate = [[8,0,6],[5,4,7],[2,3,1]]
+initialstate = [[1,2,3],[0,4,6],[7,5,8]]
 finalstate = [[1,2,3],[4,5,6],[7,8,0]]
 
 inputkarnahai = int(input("Custom input? 0/1: "))
 
 if inputkarnahai == 1:
-    for i in range(1,9):
+    for i in range(1,10):
         placeposi = int(input(f'Enter Position of {i}: '))
         initialstate[placeposi // 3][placeposi % 3] = i
         
-    for i in range(1,9):
+    for i in range(1,10):
         placeposi = int(input(f'Enter Final Position of {i}: '))
         finalstate[placeposi // 3][placeposi % 3] = i
     
@@ -105,13 +105,16 @@ def process():
     while len(open_list) > 0:
         idx = chooseleast()
         current_state = open_list[idx]
-        
+        g +=1
         if current_state == finalstate:
             print("Solution Found!")
+            print(f"Step {g} - ")        
             printstate(current_state)
+            print("Total Steps",g)
             return True
         
-        open_list.pop(idx)
+        print(f"Step {g} - ")
+        printstate(open_list.pop(idx))
         closed_list.append(current_state)
         
         for child in childgeneration(current_state):
