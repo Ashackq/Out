@@ -1,0 +1,60 @@
+[{
+    
+
+        "Rollno":1,
+        "Name":"Akash1",
+        "Age":1,
+        "Branch":"CS",
+        "Address":{"City":"Pune","State":"MH"},
+        "Hobbies":["Singing","Dancing","Cricket"],
+        "Awards":[{"Award":"Dancing","Rank":1,"Year":2008}]
+    
+},
+{
+    
+
+    "Rollno":2,
+    "Name":"Akash2",
+    "Age":2,
+    "Branch":"CS",
+    "Address":{"City":"Pune","State":"MH"},
+    "Hobbies":["Singing","Dancing","Cricket"],
+    "Awards":[{"Award":"Dancing","Rank":2,"Year":2008}]
+
+},
+{
+    
+
+    "Rollno":3,
+    "Name":"Akash3",
+    "Age":3,
+    "Branch":"CS",
+    "Address":{"City":"Pune","State":"MH"},
+    "Hobbies":["Singing","Dancing","Cricket"],
+    "Awards":[{"Award":"Dancing","Rank":3,"Year":2008}]
+
+},
+{
+    
+
+    "Rollno":4,
+    "Name":"Akash4",
+    "Age":4,
+    "Branch":"CS",
+    "Address":{"City":"Pune","State":"MH"},
+    "Hobbies":["Singing","Dancing","Cricket"],
+    "Awards":[{"Award":"Dancing","Rank":4,"Year":2008}]
+
+},
+{
+    
+
+    "Rollno":5,
+    "Name":"Akash5",
+    "Age":5,
+    "Branch":"CS",
+    "Address":{"City":"Pune","State":"MH"},
+    "Hobbies":["Singing","Dancing","Cricket"],
+    "Awards":[{"Award":"Dancing","Rank":5,"Year":2008}]
+
+}]

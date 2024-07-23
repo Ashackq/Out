@@ -1,0 +1,71 @@
+1 display all the hotels who have recieved more than 50 likes
+
+1 db.Hotels.find({ likes: { $gt: 50 } });
+
+2 display all the hotels from pune city and servers chinesse //single item array
+
+2 db.Hotels.find({ "Address.City": "Pune", Cuisines: "Chinese" });
+
+3 cities in which hotels are located
+
+3 db.Hotels.distinct("Address.City");
+
+4 display total number of hotels from pune mumbai or goa city
+
+4 db.Hotels.count({ "Address.City": { $in: ["Pune", "Mumbai", "Goa"] } });
+
+5 top 5 hotels based on their likes
+
+5 db.Hotels.find().sort({ likes: -1 }).limit(5);
+
+6 hotel names which servers atleast 2 cuisines
+
+6 db.Hotels.find({ Cuisines: { $size: { $gte: 2 } } }, { HotelName: 1, _id: 0 });
+
+7 display all the hotels servers italian punjabi and chinesse foods
+
+7 db.Hotels.find({ Cuisines: { $all: ["Italian", "Punjabi", "Chinese"] } });
+
+8 display all the hotels which are not having both types of rooms ac and non ac
+
+8 db.Hotels.find({ $or: [
+    { "Rooms.isAC": { $exists: false } },
+    { "Rooms": { $not: { $elemMatch: { isAC: true } } } },
+    { "Rooms": { $not: { $elemMatch: { isAC: false } } } }
+] });
+
+9 increment the likes by 5 of all the hotels whoes rating is greater than 4
+
+9 db.Hotels.updateMany({ Rating: { $gt: 4 } }, { $inc: { likes: 5 } });
+
+10 add one of the attribute for all the hotels named year established
+
+10 db.Hotels.updateMany({}, { $set: { "yearEstablished": new Date() } });
+
+11 add few more cuisines for taj hotel like continental , punjabi and dhaba
+
+11 db.Hotels.updateOne({ HotelName: "Taj" }, { $push: { Cuisines: { $each: ["Continental", "Punjabi", "Dhaba"] } } });
+
+12 remove 1st cuisines from hotel taj
+
+12 db.Hotels.updateOne({ HotelName: "Taj" }, { $pop: { Cuisines: -1 } });
+
+13 change the attribute name price for all the hotels to price per night
+
+13 db.Hotels.updateMany({}, { $rename: { Price: "pricePerNight" } });//
+
+14 change the attribute name type for all the hotels in city pune to room type
+
+14 db.Hotels.updateMany({"Address.City":"Pune"},{$rename:{"Type":"roomType"}})
+
+15 replace the document of hotel taj with a new document
+
+15 db.Hotels.replaceOne({"HotelName":"Taj"},{})
+
+16 remove all the hotels details having rating less than 2
+
+16 db.Hotels.deleteMany({"Rating":{$lt:2}})
+
+17 change the price of all the rooms from 5000 to 8000 whoes type is ac of hotel taj
+
+17 db.Hotels.updateOne({"HotelName":"Taj",{"Rooms.Type":"AC"}},{$set:{"Rooms.$[].Price":8000"}})

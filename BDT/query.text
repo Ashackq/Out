@@ -1,0 +1,59 @@
+db.createCollection(stub)
+display all the students that belong to computer = 
+db.stud.find({Branch:"CS"})
+
+all
+eq
+gte
+lt
+lte
+and
+or
+regex /^n/ start from n
+    /.*n.*/ contains
+    /n$/ ends with n
+    /.*n.*/
+
+limit()
+skip()
+sort({Rollno:1}) //Ascending
+display name of the students that belong to computer
+db.stud.find({Branch:"CS"},{_id:0,Name:1})
+
+display name of the students whose age is greater than 2 and who belong to pune city
+db.stud.find({$and[{Age:{$gt:2}},{"Address.City":"Pune"}]},{_id:0,Name:1})
+
+display the count of the students who are either from pune mumbai delhi kolkata 
+countdocument
+db.stud.find({"Address.City":{$in:["Pune","Mumbai","Delhi","Kolkata"]}}).count()
+
+display first 5 students agewise having heightest age from computer department
+db.stud.find().limit(5).sort({Age:1})
+
+display all the students having exactly 3 hobbies
+db.stud.find({Hobbies:{$size:3}})
+
+students having singing and dancing
+db.stud.find({Hobbies:{$all:["Singing","Dancing"]}})
+
+students having only singing and dancing
+db.stud.find({Hobbies:{$elemMatch:{Hobbies:"Singing",Hobbies:"Dancing"}}})
+
+display all the students that belong to computer who have recieved 3 awards
+db.stud.find({Awards:{$size:3}})
+
+different cities 
+db.stud.distinct("Address.City")
+
+update
+db.stud.updateOne({$and:[{Name:"Akash"},{"Address.City":"Pune"},{Age:{$gt:2}},{Branch:"CS"}]},{$set:{Branch:"IT"}})
+
+db.updateMany({Awards:{$size:3}},{$set:{Branch:"IT"}})
+
+db.updateMany({Branch:"CS"},{$unset:{Hobbies:1}})
+
+db.stud.updateOne({Rollno:3},{$push:{Hobbies:$each:["Swimming","Reading"]}})
+
+db.stud.updateOne({Branch:"CS"},{$inc:{Age:1}})
+
+db.stud.updateOne({url:"https://localhost:27017"},{$inc:{clickcount:1}},{upsert:true})

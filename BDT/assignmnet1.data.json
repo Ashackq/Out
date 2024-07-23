@@ -1,0 +1,200 @@
+[
+    {
+        "Hotelid": 1,
+        "HotelName": "Akash1",
+        "Type": 1,
+        "Rating": 4.5,
+        "Address": {
+          "Area": "Warje",
+          "City": "Pune",
+          "Pincode": 411052
+        },
+        "Rooms": [
+          { "Roomno": "101", "Type": "Deluxe", "Price": 3000 },
+          { "Roomno": "102", "Type": "Standard", "Price": 2500 }
+        ],
+        "Cuisines": ["Indian", "Continental"],
+        "likes": 123,
+        "Amenities": ["Gym", "Business Center"]
+    },
+    {
+        "Hotelid": 11,
+        "HotelName": "The Baywatch",
+        "Type": 2,
+        "Rating": 4.2,
+        "Address": {
+          "Area": "Marine Drive",
+          "City": "Mumbai",
+          "Pincode": 400020
+        },
+        "Rooms": [
+          { "Roomno": "201", "Type": "Deluxe", "Price": 5000 },
+          { "Roomno": "202", "Type": "Suite", "Price": 8000 }
+        ],
+        "Cuisines": ["Seafood", "Mediterranean"],
+        "likes": 95,
+        "Amenities": ["Pool", "Gym", "Spa", "Wi-Fi"]
+    },
+    {
+        "Hotelid": 12,
+        "HotelName": "Mountain View Lodge",
+        "Type": 3,
+        "Rating": 4.8,
+        "Address": {
+          "Area": "Ooty",
+          "City": "Tamil Nadu",
+          "Pincode": 643001
+        },
+        "Rooms": [
+          { "Roomno": "301", "Type": "Cottage", "Price": 3500 },
+          { "Roomno": "302", "Type": "Standard", "Price": 2800 }
+        ],
+        "Cuisines": ["South Indian", "North Indian"],
+        "likes": 120,
+        "Amenities": ["Garden", "Bonfire"]
+    },
+    {
+        "Hotelid": 13,
+        "HotelName": "The Desert Oasis",
+        "Type": 1,
+        "Rating": 4.5,
+        "Address": {
+          "Area": "Jaisalmer",
+          "City": "Rajasthan",
+          "Pincode": 345001
+        },
+        "Rooms": [
+          { "Roomno": "401", "Type": "Luxury Tent", "Price": 6000 },
+          { "Roomno": "402", "Type": "Standard Room", "Price": 4500 }
+        ],
+        "Cuisines": ["Rajasthani", "Continental"],
+        "likes": 88,
+        "Amenities": ["Camel Safari", "Desert Jeep Safari"]
+    },
+    {
+        "Hotelid": 14,
+        "HotelName": "The Lakeview Resort",
+        "Type": 2,
+        "Rating": 4.3,
+        "Address": {
+          "Area": "Pichola Lake",
+          "City": "Udaipur",
+          "Pincode": 313001
+        },
+        "Rooms": [
+          { "Roomno": "501", "Type": "Deluxe", "Price": 4000 },
+          { "Roomno": "502", "Type": "Suite", "Price": 6500 }
+        ],
+        "Cuisines": ["Indian", "Italian"],
+        "likes": 115,
+        "Amenities": ["Boat House", "Spa"]
+    },
+    {
+        "Hotelid": 15,
+        "HotelName": "The Himalayan Retreat",
+        "Type": 3,
+        "Rating": 4.7,
+        "Address": {
+          "Area": "Manali",
+          "City": "Himachal Pradesh",
+          "Pincode": 175131
+        },
+        "Rooms": [
+          { "Roomno": "601", "Type": "Deluxe", "Price": 3800 },
+          { "Roomno": "602", "Type": "Standard", "Price": 3000 }
+        ],
+        "Cuisines": "North Indian",
+        "likes": 102,
+        "Amenities": ["Skiing", "Trekking"]
+    },
+    {
+        "Hotelid": 16,
+        "HotelName": "The Beach House",
+        "Type": 2,
+        "Rating": 4.4,
+        "Address": {
+          "Area": "Goa",
+          "City": "Goa",
+          "Pincode": 403001
+        },
+        "Rooms": [
+          { "Roomno": "701", "Type": "Deluxe", "Price": 4500 },
+          { "Roomno": "702", "Type": "Suite", "Price": 7000 }
+        ],
+        "Cuisines": ["Goan", "Seafood"],
+        "likes": 130,
+        "Amenities": ["Beachfront", "Water Sports"]
+    },
+    {
+        "Hotelid": 17,
+        "HotelName": "The Forest Lodge",
+        "Type": 3,
+        "Rating": 4.6,
+        "Address": {
+          "Area": "Coorg",
+          "City": "Karnataka",
+          "Pincode": 571211
+        },
+        "Rooms": [
+          { "Roomno": "801", "Type": "Cottage", "Price": 3200 },
+          { "Roomno": "802", "Type": "Standard", "Price": 2500 }
+        ],
+        "Cuisines": ["South Indian", "North Indian"],
+        "likes": 98,
+        "Amenities": ["Trekking", "Wildlife Safari"]
+    },
+    {
+        "Hotelid": 18,
+        "HotelName": "The Hilltop Retreat",
+        "Type": 3,
+        "Rating": 4.7,
+        "Address": {
+          "Area": "Darjeeling",
+          "City": "West Bengal",
+          "Pincode": 734101
+        },
+        "Rooms": [
+          { "Roomno": "901", "Type": "Deluxe", "Price": 3500 },
+          { "Roomno": "902", "Type": "Standard", "Price": 2800 }
+        ],
+        "Cuisines": ["Bengali", "Continental"],
+        "likes": 112,
+        "Amenities": ["Tea Garden View", "Hiking Trails"]
+    },
+    {
+        "Hotelid": 19,
+        "HotelName": "The Cityscape Hotel",
+        "Type": 1,
+        "Rating": 4.2,
+        "Address": {
+          "Area": "Bangalore",
+          "City": "Karnataka",
+          "Pincode": 560001
+        },
+        "Rooms": [
+          { "Roomno": "1001", "Type": "Deluxe", "Price": 4000 },
+          { "Roomno": "1002", "Type": "Standard", "Price": 3200 }
+        ],
+        "Cuisines": ["Multi-Cuisine"],
+        "likes": 135,
+        "Amenities": ["Gym", "Business Center"]
+    },
+    {
+        "Hotelid": 20,
+        "HotelName": "The Beachfront Resort",
+        "Type": 2,
+        "Rating": 4.5,
+        "Address": {
+          "Area": "Kovalam",
+          "City": "Kerala",
+          "Pincode": 695521
+        },
+        "Rooms": [
+          { "Roomno": "1101", "Type": "Deluxe", "Price": 4800 },
+          { "Roomno": "1102", "Type": "Suite", "Price": 7500 }
+        ],
+        "Cuisines": ["Kerala", "Seafood"],
+        "likes": 128,
+        "Amenities": ["Beachfront", "Water Sports"]
+    }
+]
