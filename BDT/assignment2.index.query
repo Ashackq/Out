@@ -1,0 +1,20 @@
+assignment 2 indexing 
+
+db.createCollection("zipsd")
+db.zipsd.createIndex({city:1})
+db.zipsd.createIndex({city:1,state:1})
+db.zipsd.createIndex({city:1,"loc.0":1})
+
+db.zipsd.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { city: 1 }, name: 'city_1' },
+  { v: 2, key: { city: 1, state: 1 }, name: 'city_1_state_1' },
+  { v: 2, key: { city: 1, 'loc.0': 1 }, name: 'city_1_loc.0_1' }
+]
+
+db.zipsd.find({city:"AGAWAM"}).explain("executionStats")
+
+db.zipsd.find({city:"AGAWAM"}).hint("city_1").explain("allPlansExecution").executionStats
+
+db.zipsd.find({city:"AGAWAM"}).hint("city_1_state_1").explain("allPlansExecution").executionStats
