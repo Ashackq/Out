@@ -1,22 +1,3 @@
-db.createCollection(stub)
-display all the students that belong to computer = 
-db.stud.find({Branch:"CS"})
-
-all
-eq
-gte
-lt
-lte
-and
-or
-regex /^n/ start from n
-    /.*n.*/ contains
-    /n$/ ends with n
-    /.*n.*/
-
-limit()
-skip()
-sort({Rollno:1}) //Ascending
 display name of the students that belong to computer
 db.stud.find({Branch:"CS"},{_id:0,Name:1})
 

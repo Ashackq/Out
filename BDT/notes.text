@@ -1,0 +1,38 @@
+db.createCollection(stub)
+display all the students that belong to computer = 
+db.stud.find({Branch:"CS"})
+
+all
+eq
+gte
+lt
+lte
+and
+or
+regex /^n/ start from n
+    /.*n.*/ contains
+    /n$/ ends with n
+    /.*n.*/
+
+limit()
+skip()
+sort({Rollno:1}) //Ascending
+
+
+verbose logging
+explain
+namespaces -
+COLLSCAN - no collection so scan the whole collection
+db.Hotels.find({borough:"Manhattan"}).explain("executionStats")
+a. — Today at 11:39 AM
+db.Hotels.find({borough:"Manhattan"}).explain("executionStats")
+ixscan for index scan
+a. — Today at 11:53 AM
+db.Hotels.find({$and:[ {"cuisine":{$eq:"Italian"}} , {"grades.score":{$gt:50} } ]}).explain("allPlansExecution")
+db.Hotels.createIndex({cuisine:1,"grades.score":1})
+db.Hotels.getIndexes()
+.executionStats
+.queryPlanner
+.serverParameters
+a. — Today at 12:02 PM
+db.Hotels.stats()
