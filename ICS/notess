@@ -1,0 +1,61 @@
+AES 
+encryption lhs - key generation 6 words(w) <- accept 16 bit - decryption rhs (reverse of lhs)
+
+w2,w3,w4,w5 - expansion operation
+
+AES - key generation 
+16 bit key
+w0,w1 
+key expansion ->
+    w0 w1 -> g()
+    |     ___|
+    |__> x
+         |
+         w2 w2xw1(w3)
+
+def g(w1): 
+w1
+|
+v
+n0,n1
+swap
+n1,n0
+|s()|s()
+v   v
+n1' n0'
+   |
+   x <-- const value
+   | 
+   v
+   w1'
+
+
+LHS
+16 bit Plain text 
+add round key (combination of plain text and key  - any operation +-/*) <-- w0,w1 (equal half of w)
+ |
+ v
+round 1 - nibble substitution (4bit) - shift row - mix columns - add round key <-- w2,w3
+ |
+ v
+round 2 - nibble substitution (4bit) - shift row - add round key <-- w4,w5
+
+16 bit cipher text
+
+ |
+ v
+
+RHS 
+
+add round key (combination of plain text and key  - any operation +-/*) <-- w0,w1 (equal half of w)
+round 1 - nibble substitution (4bit) - shift row - mix columns - add round key <-- w2,w3
+
+round 2 - nibble substitution (4bit) - shift row - add round key <-- w4,w5
+
+
+16 bit plaintext p = d7 28
+bin = 1101 0111 0010 1000
+
+16-bit key = 4A F5 
+bin = 0100 1010 1111 0101
+
