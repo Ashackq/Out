@@ -97,8 +97,11 @@ def nibble_substitution(ark: str):
     return s(n0) + s(n1) + s(n2) + s(n3)
 
 
-def star(nit: str, what: str):
-    return
+def star(nib1: str, nib2: str):
+    num1, num2 = int(nib1, 2), nib2
+    mul = (num1 * num2) % 16
+    result_bin = format(mul, "04b")
+    return result_bin
 
 
 def mul_mat(srw: str):
