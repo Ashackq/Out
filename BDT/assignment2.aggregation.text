@@ -1,0 +1,67 @@
+1. Create database Restaurant.
+use Restaurant
+
+2. Create collection Hotel.
+db.createCollection("Hotel")
+
+3. Insert  documents with the mentioned structure.
+
+1. Display all Hotel information.
+db.Hotel.find()
+2. Display no of rooms in each hotel
+db.Hotel.aggregate([
+  {
+    $project: {
+      name: 1,
+      numRooms: { $size: "$rooms" }
+    }
+  }
+])
+3. Compute the top five hotels
+db.Hotel.aggregate([
+  {
+    $group: {
+      _id: "$name",
+      totalLikes: { $sum: "$likes" }
+    }
+  },
+  {
+    $sort: { totalLikes: -1 }
+  },
+  {
+    $limit: 5
+  }
+])
+
+4. Return hotels having likes above 1000
+db.Hotel.aggregate([
+  {
+    $group: {
+      _id: "$name",
+      totalLikes: { $sum: "$likes" }
+    }
+  },
+  {
+    $sort: { totalLikes: -1 }
+  },
+  { $match: { likes: { $gt: 1000 } }},
+
+])
+
+5. Return the Five Most Common Cuisines
+db.Hotel.aggregate([
+  { $unwind: "$cuisines" },
+  { $group: { _id: "$cuisines", count: { $sum: 1 } } },
+  { $sort: { count: -1 } },
+  { $limit: 5 }
+])
+6. Return all prices of room in different hotel of type ‘Deluxe' .
+db.Hotel.aggregate([
+  { $unwind: "$rooms" },
+  { $match: { "rooms.type": "Deluxe" } },
+  { $project: { hotel: "$name", price: "$rooms.price" } }
+])
+7. Get the total count of hotels having ratings ‘5 star’
+db.Hotel.countDocuments({ rating: "5 star" })
+8. Display the count of hotels from ‘Pune’ city.
+db.Hotel.countDocuments({ city: "Pune" })

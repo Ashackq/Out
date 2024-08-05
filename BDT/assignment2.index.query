@@ -1,6 +1,14 @@
 assignment 2 indexing 
-
+QUERIES
 db.createCollection("zipsd")
+
+db.zipsd.find({city:"AGAWAM"}).explain("executionStats")
+
+db.zipsd.find({city:"AGAWAM"}).explain("allPlansExecution").executionStats
+
+db.zipsd.find({city:"AGAWAM"}).hint("city_1_state_1").explain("allPlansExecution").executionStats
+
+
 db.zipsd.createIndex({city:1})
 db.zipsd.createIndex({city:1,state:1})
 db.zipsd.createIndex({city:1,"loc.0":1})
@@ -18,3 +26,73 @@ db.zipsd.find({city:"AGAWAM"}).explain("executionStats")
 db.zipsd.find({city:"AGAWAM"}).hint("city_1").explain("allPlansExecution").executionStats
 
 db.zipsd.find({city:"AGAWAM"}).hint("city_1_state_1").explain("allPlansExecution").executionStats
+
+ANALYSIS
+### Initial State (Before Indexing)
+
+1. **Operation: `db.zipsd.find({city:"AGAWAM"})`**
+   - **Explanation:** 
+     - **Execution Success:** true
+     - **Returned Documents:** 1
+     - **Execution Time:** 6 ms
+     - **Keys Examined:** 0
+     - **Documents Examined:** 2373
+   - **Stages:**
+     - **Filter Stage:** Applied a filter on the city, examined 2373 documents to return 1 document.
+
+### After Indexing
+
+Indexes Created:
+1. `db.zipsd.createIndex({city:1})`
+2. `db.zipsd.createIndex({city:1,state:1})`
+3. `db.zipsd.createIndex({city:1,"loc.0":1})`
+
+Indexes in Collection:
+- `_id_`
+- `city_1`
+- `city_1_state_1`
+- `city_1_loc.0_1`
+
+### Post-Indexing Operations
+
+2. **Operation: `db.zipsd.find({city:"AGAWAM"})`**
+   - **Explanation:**
+     - **Execution Success:** true
+     - **Returned Documents:** 1
+     - **Execution Time:** 10 ms
+     - **Keys Examined:** 1
+     - **Documents Examined:** 1
+   - **Stages:**
+     - **NLJ Stage:** Used `city_1` index, examined 1 key and 1 document.
+
+3. **Operation: `db.zipsd.find({city:"AGAWAM"}).hint("city_1")`**
+   - **Explanation:**
+     - **Execution Success:** true
+     - **Returned Documents:** 1
+     - **Execution Time:** 1 ms
+     - **Keys Examined:** 1
+     - **Documents Examined:** 1
+   - **Stages:**
+     - **NLJ Stage:** Explicitly used `city_1` index, examined 1 key and 1 document.
+
+4. **Operation: `db.zipsd.find({city:"AGAWAM"}).hint("city_1_state_1")`**
+   - **Explanation:**
+     - **Execution Success:** true
+     - **Returned Documents:** 1
+     - **Execution Time:** 1 ms
+     - **Keys Examined:** 1
+     - **Documents Examined:** 1
+   - **Stages:**
+     - **NLJ Stage:** Explicitly used `city_1_state_1` index, examined 1 key and 1 document.
+
+### Summary
+
+- **Initial State:**
+  - The query without an index was slow, examining all 2373 documents to return 1 document.
+
+- **Post-Indexing:**
+  - **General Query (`db.zipsd.find({city:"AGAWAM"})`):** Used the `city_1` index, significantly improving performance by examining only 1 key and 1 document, although with a slight increase in execution time (10 ms). This is due to the optimization from using the index.
+  - **Hint with `city_1` Index (`.hint("city_1")`):** Further reduced execution time to 1 ms while examining 1 key and 1 document.
+  - **Hint with `city_1_state_1` Index (`.hint("city_1_state_1")`):** Similarly efficient as using `city_1` index, with the same reduced execution time of 1 ms.
+
+The creation of indexes (`city_1`, `city_1_state_1`) drastically improved the efficiency of the query, reducing the number of documents examined from 2373 to 1 and improving the execution time.
