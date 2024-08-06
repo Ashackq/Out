@@ -38,7 +38,7 @@ def minimax(state, depth, is_maximizing):
   else:
     min_eval = math.inf
     for move in get_possible_moves(state):
-      new_state = make_move(state, move, 0)  # Assuming 0 is the minimizing player
+      new_state = make_move(state, move, 0)
       eval = minimax(new_state, depth - 1, True)
       min_eval = min(min_eval, eval)
     return min_eval
