@@ -98,3 +98,16 @@ gcd(a,b) = gcd ( b , a mod b)
 m < n
 C = m^e mod n
 m = c^d mod n
+
+
+md 5- 
+digest - hash function 
+arbitrary length to fixed length
+sha
+
+computationally high to find a input value whose hash value is z - preimage resistance
+h(x) 
+
+collision - 2 same input for same hash
+
+output 256 bit

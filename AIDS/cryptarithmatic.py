@@ -1,55 +1,11 @@
-assinment = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-
-def getset(str1, str2, str3):
-    first = []
-    second = []
-    sumed = []
-    for i in str1:
-        first.append([i, -1])
-    for i in str2:
-        second.append([i, -1])
-    for i in str3:
-        sumed.append([i, -1])
-    first.reverse()
-    second.reverse()
-    sumed.reverse()
-    return first, second, sumed
-
-
-def check(first, second, sumed):
-    j = 0
-    carry = 0
-    if len(first) == len(second):
-        for i in range(len(first)):
-            j += 1
-            if first[i][1] + second[i][1] + carry == sumed[i][1]:
-                carry = 0
-                continue
-            elif first[i][1] + second[i][1] == 10 + sumed[i][1]:
-                carry = 1
-                continue
-            else:
-                return False
-        return True
-
-
-def solver(used, first, second, sumed):
-    if len(first) != len(sumed) or len(second) != len(sumed):
-        sumed[-1][1] = 1
-        used[1] = 1
-        for i in range(10):
-            return 0
-
-
 def solve_cryptarithmetic(equation):
     """Solves a cryptarithmetic puzzle.
 
     Args:
-      equation: The cryptarithmetic equation as a string.
+        equation: The cryptarithmetic equation as a string.
 
     Returns:
-      A dictionary mapping letters to digits if a solution is found, otherwise None.
+        A dictionary mapping letters to digits if a solution is found, otherwise None.
     """
 
     words = equation.split()
@@ -62,9 +18,9 @@ def solve_cryptarithmetic(equation):
     def is_valid(mapping):
         """Checks if the current mapping is valid."""
         values = {letter: str(digit) for letter, digit in mapping.items()}
-        num1 = int("".join(c.translate(str.maketrans(values)) for c in operand1))
-        num2 = int("".join(c.translate(str.maketrans(values)) for c in operand2))
-        result_num = int("".join(c.translate(str.maketrans(values)) for c in result))
+        num1 = int("".join(values[c] for c in operand1))
+        num2 = int("".join(values[c] for c in operand2))
+        result_num = int("".join(values[c] for c in result))
 
         if operator == "+":
             return num1 + num2 == result_num
@@ -79,12 +35,15 @@ def solve_cryptarithmetic(equation):
             return None
         for digit in range(10):
             if digit not in mapping.values():
+                # Skip if the digit 0 is assigned to any leading letter
+                next_letter = next(iter(letters - set(mapping.keys())))
+                if digit == 0 and next_letter in [operand1[0], operand2[0], result[0]]:
+                    continue
                 new_mapping = mapping.copy()
-                new_mapping[next(iter(letters - set(mapping.keys())))] = digit
-                result = backtrack(new_mapping)
-                if result:
-                    return result
-        print(mapping)
+                new_mapping[next_letter] = digit
+                solution = backtrack(new_mapping)
+                if solution:
+                    return solution
         return None
 
     return backtrack({})

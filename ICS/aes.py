@@ -65,6 +65,14 @@ def s(n: str):
 
 
 def key_gen(w):
+    """
+    get 16 bit key
+    w0 and w1  = 2 halfs of w
+    w2 = w1 nibble substitution and xor with const  xor w0
+    w3 = w2 and w1 xor
+    w4 = w3 nibble  substitution and xor with const  xor w2
+    w5 = w4 and w3 XOR
+    """
 
     def g(w1, cnt):
         n0, n1 = slice_half(w1)

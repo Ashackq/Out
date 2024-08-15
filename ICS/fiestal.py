@@ -42,4 +42,7 @@ def decrypt_process(cipher: str, keys: list[str], rounds: int):
 plain_text = "0100111101001011"
 keys = ["10100110"]
 rounds = 1
+print("Plain Text", plain_text)
+print("Keys", keys)
+print("Round", rounds)
 print(encrypt_process(plain_text, keys, rounds))

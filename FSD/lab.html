@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .form-container {
+        width: 300px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      .form-group button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .form-group button:hover {
+        background-color: #0056b3;
+      }
+      .error {
+        color: red;
+        font-size: 0.875em;
+        margin-top: 5px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Simple Form</h2>
+      <form id="simpleForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="contact">Contact</label>
+          <input
+            type="number"
+            id="contact"
+            onKeyPress="if(this.value.length==10) return false;"
+            name="contact"
+            required
+          />
+          <div id="contactError" class="error"></div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+          <div id="emailError" class="error"></div>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" name="address" required />
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <select id="state" name="state" required onchange="updateCities()">
+            <option value="">Select State</option>
+            <option value="maharashtra">Maharashtra</option>
+            <option value="gujarat">Gujarat</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <select id="city" name="city" required>
+            <option value="">Select City</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const citiesByState = {
+        maharashtra: ["Mumbai", "Pune"],
+        gujarat: ["Ahmedabad", "Surat"],
+      };
+
+      function updateCities() {
+        const stateSelect = document.getElementById("state");
+        const citySelect = document.getElementById("city");
+        const selectedState = stateSelect.value;
+
+        citySelect.innerHTML = '<option value="">Select City</option>'; //clears the appended values
+
+        if (selectedState) {
+          const cities = citiesByState[selectedState];
+          cities.forEach((city) => {
+            const option = document.createElement("option");
+            option.value = city.toLowerCase();
+            option.textContent = city;
+            citySelect.appendChild(option);
+          });
+        }
+      }
+      document
+        .getElementById("contact")
+        .addEventListener("change", function (event) {
+          const contact = event.target.value;
+          const contactError = document.getElementById("contactError");
+          contactError.textContent = "";
+          if (contact != 10) {
+            contactError.textContent = "Contact must be 10 digits.";
+            contactError.style.display = "block";
+          }
+        });
+
+      document
+        .getElementById("email")
+        .addEventListener("change", function (event) {
+          const email = event.target.value;
+          const emailError = document.getElementById("emailError");
+          emailError.textContent = "";
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(email)) {
+            emailError.textContent = "Please enter a valid email address.";
+            emailError.style.display = "block";
+          }
+        });
+
+      document
+        .getElementById("simpleForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const name = document.getElementById("name").value;
+          const contact = document.getElementById("contact").value;
+          const email = document.getElementById("email").value;
+          const address = document.getElementById("address").value;
+          const state = document.getElementById("state").value;
+          const city = document.getElementById("city").value;
+
+          const contactError = document.getElementById("contactError");
+          const emailError = document.getElementById("emailError");
+
+          if (contactError.checkVisibility() || emailError.checkVisibility) {
+            alert("There is an error");
+            window.location.reload();
+          } else {
+            alert(
+              `Form Data:\nName: ${name}\nContact: ${contact}\nEmail: ${email}\nAddress: ${address}\nState: ${state}\nCity: ${city}`
+            );
+          }
+        });
+    </script>
+
+    <!-- 
+$("#state").change(function() { // gets attribute of the object
+19 const selectedState = $(this).val();
+20 const citySelect = $("#city");        // 
+
+21 citySelect.empty(); //makes empty
+
+22 if (selectedState in citiesByState) { // validation for injection
+
+23 const cities = citiesByState[selectedState];
+24 $.each(cities, function(index, city) {
+
+25 citySelect.append($("<option>").text(city));
+26 });
+27 } else {
+
+28 citySelect.append($("<option>").text("Select State first"));
+29 }
+30 }); -->
+  </body>
+</html>
