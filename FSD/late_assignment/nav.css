@@ -1,0 +1,32 @@
+#menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ccc;
+}
+
+#menu li {
+  margin: 5px;
+  width: calc(20% - 10px);
+}
+
+#menu a {
+  text-decoration: none;
+  color: black;
+  padding: 10px 20px;
+  display: block;
+  text-align: center;
+}
+
+#menu a:hover {
+  background-color: #ddd;
+}
+
+@media (max-width: 600px) {
+  #menu li {
+    width: 100%;
+  }
+}

@@ -36,9 +36,8 @@ def apply_substitution(subst, term):
         return term
 
 
-term1 = ["ancestor", "X", ["parent", "X", "Y"]]
-term2 = ["ancestor", ["grandparent", "Z"], ["parent", "Z", ["child", "W"]]]
-
+term1 = ["f", "X", ["g", "X"]]
+term2 = ["f", ["h", "Y"], ["g", ["h", "Y"]]]
 subst = unify(term1, term2, {})
 
 print("Substitution:", subst)

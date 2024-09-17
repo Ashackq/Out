@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="nav.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guessing Game</title>
+  </head>
+  <body>
+    <ul id="menu">
+      <li><a href="calculator.html">Calculator</a></li>
+      <li><a href="chatapplication.html">Chat Application</a></li>
+      <li><a href="cooldown.html">Countdown Timer</a></li>
+      <li><a href="filter.html">Product Filter</a></li>
+      <li><a href="formlab.html">Form Validation</a></li>
+      <li><a href="imageslider.html">Image Slider</a></li>
+      <li><a href="numberguessing.html">Number Guessing</a></li>
+      <li><a href="simpleanimation.html">Simple Animation</a></li>
+      <li><a href="todolist.html">To-Do List</a></li>
+    </ul>
+    <h1>Number Guessing Game</h1>
+    <p>Guess a number between 1 and 10:</p>
+    <input type="number" id="guessInput" min="1" max="10" />
+    <button onclick="guessNumber()">Guess</button>
+    <p id="result"></p>
+
+    <script>
+      const randomNumber = Math.floor(Math.random() * 10) + 1;
+      function guessNumber() {
+        const userGuess = parseInt(document.getElementById("guessInput").value);
+        const resultElement = document.getElementById("result");
+
+        if (userGuess === randomNumber) {
+          resultElement.textContent =
+            "Congratulations! You guessed the number.";
+        } else {
+          resultElement.textContent = "Try again!";
+        }
+      }
+    </script>
+  </body>
+</html>

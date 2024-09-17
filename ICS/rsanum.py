@@ -1,3 +1,10 @@
+# Rivest-Shamir-Adleman
+"""
+asymmetric
+data transmission and digital signatures
+difficulty of factoring large prime numbers
+
+"""
 import random
 
 
@@ -18,6 +25,7 @@ def find_d(e, phi):
 
 def generate_keypair(p, q):
     n = p * q
+    # Euler's totient
     phi = (p - 1) * (q - 1)
 
     e = random.randint(2, phi - 1)

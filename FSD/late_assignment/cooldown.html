@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="nav.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Timer</title>
+  </head>
+  <body>
+    <ul id="menu">
+      <li><a href="calculator.html">Calculator</a></li>
+      <li><a href="chatapplication.html">Chat Application</a></li>
+      <li><a href="cooldown.html">Countdown Timer</a></li>
+      <li><a href="filter.html">Product Filter</a></li>
+      <li><a href="formlab.html">Form Validation</a></li>
+      <li><a href="imageslider.html">Image Slider</a></li>
+      <li><a href="numberguessing.html">Number Guessing</a></li>
+      <li><a href="simpleanimation.html">Simple Animation</a></li>
+      <li><a href="todolist.html">To-Do List</a></li>
+    </ul>
+    <h1>Countdown Timer</h1>
+    <div>The distance:<span id="distance"></span></div>
+    <div id="timer"></div>
+    <script>
+      const targetDate = new Date("2024-08-14T12:44:59").getTime();
+      const distancecval = document.getElementById("distance");
+      function updateTimer() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+        distancecval.innerHTML = distance;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById(
+          "timer"
+        ).innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        if (distance < 0) {
+          clearInterval(interval);
+          document.getElementById("timer").innerHTML = "EXPIRED";
+        }
+      }
+
+      const interval = setInterval(updateTimer, 1);
+    </script>
+  </body>
+</html>

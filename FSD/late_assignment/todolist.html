@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="nav.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <ul id="menu">
+      <li><a href="calculator.html">Calculator</a></li>
+      <li><a href="chatapplication.html">Chat Application</a></li>
+      <li><a href="cooldown.html">Countdown Timer</a></li>
+      <li><a href="filter.html">Product Filter</a></li>
+      <li><a href="formlab.html">Form Validation</a></li>
+      <li><a href="imageslider.html">Image Slider</a></li>
+      <li><a href="numberguessing.html">Number Guessing</a></li>
+      <li><a href="simpleanimation.html">Simple Animation</a></li>
+      <li><a href="todolist.html">To-Do List</a></li>
+    </ul>
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Add a new task" />
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+      const taskList = document.getElementById("taskList");
+
+      function addTask() {
+        const taskInput = document.getElementById("taskInput");
+        const taskText = taskInput.value;
+        if (taskText === "") return;
+
+        const li = document.createElement("li");
+        li.textContent = taskText;
+        li.onclick = function () {
+          this.remove();
+        };
+
+        taskList.appendChild(li);
+        taskInput.value = "";
+      }
+    </script>
+  </body>
+</html>
