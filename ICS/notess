@@ -111,3 +111,40 @@ h(x)
 collision - 2 same input for same hash
 
 output 256 bit
+
+assignment- 8 
+pgp
+
+key generations 
+size , letters , characters 
+fundamentals of the algorithm 
+in market - most algorithm not used directly
+generate key with our own identity
+secured email communitation
+
+To encrypt a plaintext file with recipent's public key, type:
+   pgp -e textfile her_userid [other userids] (produces textfile.pgp)
+To sign a plaintext file with your secret key:
+   pgp -s textfile [-u your_userid]           (produces textfile.pgp)
+To sign a plaintext file with your secret key, and then encrypt it
+   with recipent's public key, producing a .pgp file:
+   pgp -es textfile her_userid [other userids] [-u your_userid]
+To encrypt with conventional encryption only:
+   pgp -c textfile
+To decrypt or check a signature for a ciphertext (.pgp) file:
+   pgp ciphertextfile [plaintextfile]
+To produce output in ASCII for email, add the -a option to other options.
+To generate your own unique public/secret key pair:  pgp -kg
+For help on other key management functions, type:   pgp -k
+For help on group management functions, type:   pgp -g
+
+security grades - 
+a1 b1 c1 d1
+
+random number generation - pgp tool - padding
+
+asc default extention - armour file
+-kxa
+-ka
+-ea
+-
